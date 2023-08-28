@@ -48,6 +48,7 @@ const Error = styled.span`
 `;
 
 function CreateCabinForm() {
+
   const { register, handleSubmit, reset, getValues, formState } = useForm();
   const { errors } = formState;
 
@@ -65,7 +66,7 @@ function CreateCabinForm() {
   });
 
   function onSubmit(data) {
-    mutate(data);
+    mutate({...data,image:data.image[0]});
   }
   function onError(error) {
     console.log(error);
