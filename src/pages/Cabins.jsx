@@ -5,10 +5,10 @@ import CreateCabinForm from "../features/cabins/CreateCabinForm";
 import Button from "../ui/Button";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
+import AddCabin from "../features/cabins/AddCabin";
 
 function Cabins() {
 
-  const [showCabinForm ,setShowCabinForm]=useState(false);
   return (
     <>
       <Row type="horizontal">
@@ -17,8 +17,7 @@ function Cabins() {
       </Row>
       <Row>
         <CabinTable/>
-        <Button onClick={()=>setShowCabinForm(show=>!showCabinForm)}>Add New Cabin</Button>
-        {showCabinForm && <CreateCabinForm/>}
+          <AddCabin/>
       </Row>
     </>
   );
