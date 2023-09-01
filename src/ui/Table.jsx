@@ -88,8 +88,10 @@ function Row({ children }) {
     </StyledRow>
   );
 }
-function Body() {}
-// function Footer() {}
+function Body({data,render}) {
+  if(!data.length) return <Empty>No data for this moment </Empty>
+  return <StyledBody>{data.map(render)}</StyledBody>
+}
 
 Table.Header = Header;
 Table.Row = Row;

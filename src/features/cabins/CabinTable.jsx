@@ -5,8 +5,6 @@ import CabinRow from "./CabinRow";
 import { useCabins } from "./useCabins";
 import Table from "../../ui/Table";
 
-
-
 // const TableHeader = styled.header`
 //   display: grid;
 //   grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
@@ -23,11 +21,11 @@ import Table from "../../ui/Table";
 // `;
 
 function CabinTable() {
- const {cabins,isLoading,error} =useCabins()
-  if(isLoading) return <Spinner/>
+  const { cabins, isLoading, error } = useCabins();
+  if (isLoading) return <Spinner />;
 
   return (
-    <Table columns='0.6fr 1.8fr 2.2fr 1fr 1fr 1fr'>
+    <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
       <Table.Header>
         <div>Image</div>
         <div>name</div>
@@ -35,9 +33,11 @@ function CabinTable() {
         <div>Price</div>
         <div>discount</div>
       </Table.Header>
-      {cabins.map((cabin) => (
-        <CabinRow cabin={cabin} key={cabin.id} />
-      ))}
+
+      <Table.Body
+        data={cabins}
+        render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
+      />
     </Table>
   );
 }
