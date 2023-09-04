@@ -25,7 +25,9 @@ function BookingDetail() {
   const moveBack = useMoveBack();
   
 
-  if(!booking) return;
+
+
+  if (isLoading) return <Spinner />;
   const {status,id:bookingId}=booking
 
   const statusToTagName = {
@@ -33,8 +35,6 @@ function BookingDetail() {
     "checked-in": "green",
     "checked-out": "silver",
   };
-  if (isLoading) return <Spinner />;
-
 
   return (
     <>
