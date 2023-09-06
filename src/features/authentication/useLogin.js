@@ -11,7 +11,7 @@ export function useLogin() {
   const { mutate: login, isLoading } = useMutation({
     mutationFn: ({ email, password }) => loginApi({ email, password }),
     onSuccess: (user) => {
-      navigate('/')
+      navigate('/', { replace: true })
       toast.success('Logedin Successfully ')
     },
     onError: (err) => {
