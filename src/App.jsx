@@ -16,6 +16,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import Checkin from "./pages/Checkin";
 import AppLayout from "./ui/AppLayout";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import { DarkModProvider } from "./context/DarkModeContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,6 +29,7 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
+    <DarkModProvider>
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
       <GlobalStyles />
@@ -77,6 +79,7 @@ function App() {
         }}
       />
     </QueryClientProvider>
+    </DarkModProvider>
   );
 }
 
