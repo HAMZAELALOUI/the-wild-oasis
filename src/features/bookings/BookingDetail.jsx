@@ -17,6 +17,7 @@ import { useCheckout } from "../check-in-out/useCheckout";
 import { useDeleteBooking } from "./useDeleteBooking";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
+import Empty from "../../ui/Empty";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -32,6 +33,7 @@ function BookingDetail() {
   const moveBack = useMoveBack();
 
   if (isLoading) return <Spinner />;
+  if (!booking) return <Empty resource="booking" />;
   const { status, id: bookingId } = booking;
 
   const statusToTagName = {
@@ -69,14 +71,18 @@ function BookingDetail() {
         )}
         <Modal>
           <Modal.Open opens="delete">
-            <Button variation="danger" icon={<HiTrash />}>Delete Booking</Button>
+            <Button variation="danger" icon={<HiTrash />}>
+              Delete Booking
+            </Button>
           </Modal.Open>
 
           <Modal.Window name="delete">
             <ConfirmDelete
-              onConfirm={() => deleteBooking(bookingId,{
-                onSettled:navigate(-1)
-              })}
+              onConfirm={() =>
+                deleteBooking(bookingId, {
+                  onSettled: navigate(-1),
+                })
+              }
               resourceName="booking"
               disabled={isDeleting}
             />
